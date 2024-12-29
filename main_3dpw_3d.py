@@ -20,8 +20,8 @@ def main(opt):
     in_features = opt.in_features  # 66
     d_model = opt.d_model
     kernel_size = opt.kernel_size
-    memory_size = opt.memory_size
-    net_pred = stage_4.LearnableAttModel(opt=opt)
+    # memory_size = opt.memory_size
+    net_pred = stage_4.MultiStageModel(opt=opt)
     net_pred.to(opt.cuda_idx)
 
     optimizer = optim.Adam(filter(lambda x: x.requires_grad, net_pred.parameters()), lr=opt.lr_now)
@@ -120,7 +120,7 @@ def eval(opt):
     lr_now = opt.lr_now
     start_epoch = 1
     print('>>> create models')
-    net_pred = stage_4.LearnableAttModel(opt=opt)
+    net_pred = stage_4.MultiStageModel(opt=opt)
     net_pred.to(opt.cuda_idx)
     net_pred.eval()
 

@@ -19,7 +19,8 @@ class Options:
         # ===============================================================
         self.parser.add_argument('--cuda_idx', type=str, default='cuda:0', help='cuda idx')
         self.parser.add_argument('--data_dir', type=str,
-                                 default='/media/mtz/076f660b-b7de-4646-833c-0b7466f35185/data_set/h3.6m/dataset/',
+                                 # default='/media/mtz/076f660b-b7de-4646-833c-0b7466f35185/data_set/h3.6m/dataset/',
+                                 default='data/h36m/h36m',
                                  help='path to dataset')
         self.parser.add_argument('--rep_pose_dir', type=str,
                                  default='./rep_pose/rep_pose.txt',help='path to dataset')
@@ -38,7 +39,7 @@ class Options:
         # self.parser.add_argument('--output_size', type=int, default=85, help='the output size of the neural net')
         self.parser.add_argument('--in_features', type=int, default=66, help='size of each model layer')
         self.parser.add_argument('--num_stage', type=int, default=12, help='size of each model layer')
-        self.parser.add_argument('--d_model', type=int, default=64, help='past frame number')
+        self.parser.add_argument('--d_model', type=int, default=16, help='past frame number')
         self.parser.add_argument('--kernel_size', type=int, default=10, help='past frame number')
         self.parser.add_argument('--drop_out', type=float, default=0.3, help='drop out probability')
 
@@ -49,17 +50,17 @@ class Options:
         self.parser.add_argument('--decoder_n', type=int, default=6, help='decoder layer num')
         self.parser.add_argument('--rep_pose_size', type=int, default=2000, help='rep_pose_size')
         self.parser.add_argument('--updata_rate', type=float, default=0.3, help='rep pose updata_rate')
-        self.parser.add_argument('--input_n', type=int, default=50, help='past frame number')
-        self.parser.add_argument('--output_n', type=int, default=10, help='future frame number')
-        self.parser.add_argument('--dct_n', type=int, default=20, help='future frame number')
+        self.parser.add_argument('--input_n', type=int, default=10, help='past frame number')
+        self.parser.add_argument('--output_n', type=int, default=25, help='future frame number')
+        self.parser.add_argument('--dct_n', type=int, default=35, help='future frame number')
         self.parser.add_argument('--lr_now', type=float, default=0.005)
         self.parser.add_argument('--max_norm', type=float, default=10000)
-        self.parser.add_argument('--epoch', type=int, default=100)
-        self.parser.add_argument('--batch_size', type=int, default=32)
+        self.parser.add_argument('--epoch', type=int, default=50)
+        self.parser.add_argument('--batch_size', type=int, default=16)
         self.parser.add_argument('--test_batch_size', type=int, default=32)
         self.parser.add_argument('--is_load', dest='is_load', action='store_true',
                                  help='whether to load existing model')
-        self.parser.add_argument('--test_sample_num', type=int, default=256, help='the num of sample, '
+        self.parser.add_argument('--test_sample_num', type=int, default=-1, help='the num of sample, '
                                                                                   'that sampled from test dataset'
                                                                                   '{8,256,-1(all dataset)}')
 
